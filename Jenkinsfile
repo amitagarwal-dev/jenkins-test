@@ -4,6 +4,7 @@ pipeline{
         stage("A"){
             steps{
                 echo "========executing A========"
+                sh "npm test"
             }
             post{
                 always{
