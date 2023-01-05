@@ -1,21 +1,16 @@
 pipeline{
     agent any
     stages{
-        stage("A"){
+        stage("Unit Testing"){
             steps{
                 echo "========executing A========"
                 sh "npm test"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+        }
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'sonarqube-coverage';
+            withSonarQubeEnv() {
+                sh "${scannerHome}/bin/sonar-scanner"
             }
         }
     }
