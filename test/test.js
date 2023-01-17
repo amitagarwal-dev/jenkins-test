@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
-const sumAsync = require("../utils").sumAsync;
-const sumSync = require("../utils").sumSync;
+const sumAsync = require("../src/utils").sumAsync;
+const sumSync = require("../src/utils").sumSync;
 
 
 describe('utils', function() {

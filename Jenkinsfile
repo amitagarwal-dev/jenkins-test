@@ -1,28 +1,69 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-          stage('SonarQube Analysis') {
-            steps{
-                sh "sonar-scanner   -Dsonar.projectKey=local-test   -Dsonar.sources=.   -Dsonar.host.url=http://localhost:9000   -Dsonar.login=sqp_c19123a25187fb164efe54abfa4e8c4491c14f20"
+
+    stages {
+        stage('SCM') {
+            steps {
+                git 'https://github.com/amitagarwal-dev/jenkins-test.git'
             }
         }
-        stage("building"){
-            steps{
-                echo "========executing A========"
-                sh "npm install"
+
+        stage('Dependency management') {
+            steps {
+                sh 'npm install'
             }
         }
+
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+        // stage('Lint') {
+        //     steps {
+        //         sh 'npm run lint'
+        //     }
+        // }
+        stage('Sonar Report') {
+            steps {
+                sh 'npm run sonar'
+            }
+        }
+        stage('Create Docker Image') {
+            steps {
+                sh 'npm run createImage'
+            }
+        }
+
+        // stage('Notify') {
+        //     steps {
+        //         slackSend channel: '#your-channel', message: 'Build completed!'
+        //     }
+        // }
+
       
-    }
-    post{
-        always{
-            echo "========always========"
+
+        // stage('Code quality') {
+        //     steps {
+        //         sonarqube environment: [
+        //             token: "YOUR_SONARQUBE_TOKEN",
+        //             url: "http://your-sonarqube-server"
+        //         ]
+        //     }
+        // }
+
+        stage('Code review') {
+            steps {
+                input 'Approve this build?'
+            }
         }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
+
+        // stage('Report') {
+        //     steps {
+        //         junit '**/test-results/*.xml',
+        //         publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'coverage', reportFiles: 'index.html', reportName: 'Code coverage'])
+        //     }
+        // }
     }
 }
