@@ -6,7 +6,7 @@
   "sonarToken": "sqp_c8909a89be70821779c63f9c6d154bcc89e42fb4",
   "sonarServer": "http://localhost:9000/",
   "scripts": {
-    "test": "nyc --exclude-node-modules --clean --reporter=lcovonly mocha",
+    "test": "nyc --exclude-node-modules --reporter=lcovonly mocha",
     "sonar": "node sonar.js",
     "createImage": "docker image build -t $npm_package_name:$npm_package_version ."
   },
