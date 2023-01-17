@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+         stage('Nodejs Version') {
+            steps {
+                echo "nodejs version"
+                sh 'node -v'
+            }
+        }
         stage('Dependency management') {
             steps {
                 sh 'npm install'
