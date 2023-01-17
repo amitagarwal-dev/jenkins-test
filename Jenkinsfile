@@ -18,7 +18,10 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                nodejs(nodeJSInstallationName: 'node14') {
+                    sh 'npm test'
+                }
+                
             }
         }
 
@@ -29,7 +32,9 @@ pipeline {
         // }
         stage('Sonar Report') {
             steps {
-                sh 'npm run sonar'
+                 nodejs(nodeJSInstallationName: 'node14') {
+                    sh 'npm run sonar'
+                }
             }
         }
         stage('Create Docker Image') {
