@@ -1,16 +1,14 @@
 pipeline {
     agent any
-    env.NODEJS_HOME = "${tool 'Node 14.21.2'}"
-    // on linux / mac
-    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-    // on windows
-    env.PATH="${env.NODEJS_HOME};${env.PATH}"
-    sh 'npm --version'
+  
     stages {
          stage('Nodejs Version') {
             steps {
-                echo "nodejs version"
-                sh 'node -v'
+                 nodejs(nodeJSInstallationName: 'Node 14.21.2') {
+                   echo "nodejs version"
+                    sh 'node -v'
+                }
+                
             }
         }
         stage('Dependency management') {
