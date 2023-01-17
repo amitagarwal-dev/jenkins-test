@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('SCM') {
-            steps {
-                git 'https://github.com/amitagarwal-dev/jenkins-test.git'
-            }
-        }
-
         stage('Dependency management') {
             steps {
                 sh 'npm install'
