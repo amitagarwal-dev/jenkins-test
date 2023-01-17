@@ -1,10 +1,9 @@
 pipeline {
     agent any
-  
     stages {
          stage('Nodejs Version') {
             steps {
-                 nodejs(nodeJSInstallationName: 'Node 14.21.2') {
+                 nodejs(nodeJSInstallationName: 'node14') {
                    echo "nodejs version"
                     sh 'node -v'
                 }
