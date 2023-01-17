@@ -4,6 +4,7 @@ pipeline {
     stages {
          stage('Nodejs Version') {
             steps {
+                sh 'nvm use 14'
                 echo "nodejs version"
                 sh 'node -v'
             }
