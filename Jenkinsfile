@@ -32,8 +32,10 @@ pipeline {
         // }
         stage('Sonar Report') {
             steps {
+                withSonarQubeEnv('sonar-scanner') {            
                  nodejs(nodeJSInstallationName: 'node14') {
                     sh 'npm run sonar'
+                 }
                 }
             }
         }
