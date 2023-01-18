@@ -37,6 +37,13 @@ pipeline {
                 }
             }
         }
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
         stage('Create Docker Image') {
             steps {
                 sh 'npm run createImage'
@@ -63,6 +70,12 @@ pipeline {
         stage('Code review') {
             steps {
                 input 'Approve this build?'
+            }
+        }
+
+           stage('Deploying') {
+            steps {
+                echo "Deployed"
             }
         }
 
