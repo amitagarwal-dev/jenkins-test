@@ -16,7 +16,7 @@ describe('utils', function() {
 
   describe('#sumAsync', function() {
     it('should return 2 when the value is (1,1)', async function() {
-      assert.equal(await sumAsync(1,2),2);
+      assert.equal(await sumAsync(1,1),2);
     });
 
     //   it('should return 21 when the value is ("2",1)', async function() {
