@@ -7,7 +7,7 @@ scanner(
       'sonar.projectName': packageJson.name,      
       'sonar.projectDescription': packageJson.description,                                                                      
       'sonar.projectKey': packageJson.name,
-      'sonar.login': packageJson.sonarToken,                                                                          
+      //'sonar.login': packageJson.sonarToken,                                                                          
       'sonar.language': 'js',  
       'sonar.tests':  'test',
       'sonar.sources': './src',
