@@ -43,9 +43,9 @@ pipeline {
         }
         stage("Quality Gate") {
             steps {
-            //   timeout(time: 1, unit: 'MINUTES') {
-                waitForQualityGate webhookSecretId: 'sonarserver', abortPipeline: true
-            //   }
+               timeout(time: 1, unit: 'MINUTES') {
+                waitForQualityGate webhookSecretId: 'sonarwebhook', abortPipeline: true
+               }
             }
           }
         stage('Create Docker Image') {
