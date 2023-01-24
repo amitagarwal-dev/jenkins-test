@@ -12,7 +12,9 @@ pipeline {
         }
         stage('Dependency management') {
             steps {
-                sh 'npm install'
+                 nodejs(nodeJSInstallationName: 'node14') {
+                    sh 'npm install'
+                }
             }
         }
 
@@ -48,7 +50,9 @@ pipeline {
         //   }
         stage('Create Docker Image') {
             steps {
-                sh 'npm run createImage'
+                  nodejs(nodeJSInstallationName: 'node14') {
+                    sh 'npm run createImage'
+                }
             }
         }
 
