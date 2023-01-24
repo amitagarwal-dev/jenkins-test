@@ -2,7 +2,7 @@ const scanner = require('sonarqube-scanner');
 const packageJson = require('./package.json');
 scanner(
   {
-    serverUrl : packageJson.sonarServer,
+    // serverUrl : packageJson.sonarServer,
     options: {
       'sonar.projectName': packageJson.name,      
       'sonar.projectDescription': packageJson.description,                                                                      
