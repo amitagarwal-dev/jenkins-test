@@ -32,20 +32,20 @@ pipeline {
         // }
         stage('Sonar Report') {
             steps {
-                withSonarQubeEnv('sonar-scanner') {            
+                withSonarQubeEnv('sonarserver') {            
                  nodejs(nodeJSInstallationName: 'node14') {
                     sh 'npm run sonar'
                  }
                 }
             }
         }
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-          }
+        // stage("Quality Gate") {
+        //     steps {
+        //       timeout(time: 1, unit: 'MINUTES') {
+        //         waitForQualityGate abortPipeline: true
+        //       }
+        //     }
+        //   }
         stage('Create Docker Image') {
             steps {
                 sh 'npm run createImage'

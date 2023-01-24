@@ -17,6 +17,5 @@ scanner(
     //   'sonar.test.inclusions':  'test/*.js',
       'sonar.javascript.lcov.reportPaths':'./coverage/lcov.info'   
     }
-  },
-  () => process.exit()         
+  }        
 )

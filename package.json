@@ -1,10 +1,10 @@
 {
   "name": "first-test",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "demo project",
   "main": "index.js",
-  "sonarToken": "sqp_c8909a89be70821779c63f9c6d154bcc89e42fb4",
-  "sonarServer": "http://localhost:9000/",
+  "sonarToken": "sqp_061bea50656af1cbe2e7d20a2be2f54c0657b92c",
+  "sonarServer": "http://10.10.30.154:9000/",
   "scripts": {
     "test": "nyc --exclude-node-modules --reporter=lcovonly mocha",
     "sonar": "node sonar.js",
